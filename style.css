@@ -1,0 +1,506 @@
+/* ==============================
+   BASE
+============================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: "Helvetica Neue", var(--sansFont, "Helvetica Neue"), Helvetica,
+    sans-serif;
+  overflow-x: hidden; /* sin scroll horizontal */
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+.navbar-clear {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.navbar-scrolled {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.01) 99%,
+    rgba(0, 0, 0, 0.0) 100%
+  ) !important;
+  backdrop-filter: blur(1px) saturate(140%);
+}
+/* Links de la navbar */
+.navbar-clear .nav-link {
+  color: #b8b8b8 !important;
+  transition: color 0.25s ease;
+  font-weight: 500;
+}
+.navbar-clear .nav-link:hover{
+    color: #ffffff !important;
+}
+.navbar-clear .nav-link:focus,
+.navbar-clear .nav-link.active {
+  color: #9dff00 !important;
+}
+
+.navbar-clear .navbar-brand {
+  color: #ffffff !important;
+  font-weight: 500;
+}
+
+/* Ícono de lupa */
+.search-icon-container i {
+  font-size: 1.2rem;
+  color: #b8b8b8;
+  transition: color 0.25s ease;
+}
+.search-icon-container button:hover i,
+.search-icon-container button:focus i {
+  color: #ffffff;
+}
+
+/* Overlay negro full-screen para mobile (debajo de la navbar) */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 1020; /* navbar fixed-top en Bootstrap usa 1030 */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.nav-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =================================================================
+   HERO SECTION
+   ================================================================= */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('img/virgil-abloh-1.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 6rem 1rem;
+  text-align: center;
+}
+
+.badge-kicker {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-nav-active);
+  font-family: var(--sansFont);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.hero-title {
+  font-family: "Palatino", var(--serifFont, "Palatino"), serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 0;
+  line-height: 1.15;
+  color: var(--color-nav-active);
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-copy-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--color-nav-active);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  font-family: var(--sansFont);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-copy-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Carousel */
+.hero-carousel-wrapper {
+  position: relative;
+  z-index: 2;
+  margin-top: 1rem;
+}
+
+#codesCarousel .carousel-item img {
+  height: 320px;
+  object-fit: cover;
+}
+
+#codesCarousel .carousel-caption {
+  background: rgba(0, 0, 0, 0.55);
+  padding: 0.75rem 1rem;
+  border-radius: 0;
+}
+
+/* ==============================
+   SECCIONES GENERALES
+============================== */
+.section {
+  padding: 3rem 0;
+}
+
+.section-ink {
+  background: #0a0a0a;
+}
+
+.section-main {
+  background: #050505;
+}
+
+.section-heading {
+  font-family: "Palatino", var(--serifFont, "Palatino"), serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.05;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.section-intro {
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "Helvetica Neue", var(--sansFont, "Helvetica Neue"), Helvetica,
+    sans-serif;
+  color: #d1d1d1;
+}
+
+/* Párrafos generales */
+p {
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "Helvetica Neue", var(--sansFont, "Helvetica Neue"), Helvetica,
+    sans-serif;
+  color: #d1d1d1;
+}
+
+/* Figcaption */
+.figure-caption {
+  color: #9fa3a7;
+}
+
+/* ==============================
+   PASTILLAS (MISIÓN)
+============================== */
+.card-pill {
+  background: #0f0f0f;
+  border: 1px solid #272727;
+  border-radius: 0;
+}
+.card-pill .card-img-top {
+  height: 180px;
+  object-fit: cover;
+}
+.pill-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: #9dff00;
+}
+.pill-text {
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+/* ==============================
+   NOTICIAS (NOTA PRINCIPAL)
+============================== */
+.aside-card {
+  background: #101010;
+  border: 1px solid #2a2a2a;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+.aside-title {
+  font-family: "Palatino", var(--serifFont, "Palatino"), serif;
+  font-weight: 300;
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+.meta-list {
+  list-style: none;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+.meta-list .label {
+  color: #a8a8a8;
+}
+
+/* ==============================
+   GALERÍA MASONRY (TRABAJOS)
+============================== */
+
+.masonry-grid {
+  column-count: 1;          /* móviles: una columna */
+  column-gap: 1.5rem;
+}
+
+.masonry-item {
+  break-inside: avoid;      /* evita que se corten las imágenes */
+  margin-bottom: 1.5rem;
+}
+
+.masonry-item img {
+  width: 100%;
+  display: block;
+  height: auto;
+  border-radius: 0;
+}
+
+/* Más columnas según el viewport */
+@media (min-width: 576px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 992px) {
+  .masonry-grid {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1400px) {
+  .masonry-grid {
+    column-count: 4;
+  }
+}
+
+/* Fondo blanco solo para la sección de trabajos */
+.section-white {
+  background: #ffffff;
+  color: #000000;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Ajustes para que los textos dentro se vean en negro */
+.section-white .section-heading {
+  color: #000000;
+  font-family: "Palatino", var(--serifFont, "Palatino"), serif;
+}
+
+.section-white .section-intro {
+  color: #333333;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* En la galería, las imágenes no llevan borde ni sombra */
+.section-white .masonry-item img {
+  border-radius: 0;
+}
+
+/* ==============================
+   VIDEO (EMPRESA)
+============================== */
+.section-ink iframe {
+  border: none;
+}
+
+/* ==============================
+   CONTACTO
+============================== */
+.contact-form .form-control {
+  background: #050505;
+  border-radius: 0;
+  border: 1px solid #3a3a3a;
+  color: #ffffff;
+}
+.contact-form .form-control:focus {
+  border-color: #ffffff;
+  box-shadow: none;
+}
+.contact-form .form-label {
+  font-size: 0.85rem;
+}
+
+/* Caja info */
+.info-box {
+  background: #101010;
+  border: 1px solid #2a2a2a;
+  padding: 1.25rem;
+}
+
+/* BOTÓN VERDE NEÓN PRINCIPAL */
+.btn-neon {
+  background: #9dff00;
+  color: #000000;
+  border: none;
+  padding: 0.65rem 1.8rem;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto hover */
+.btn-neon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(157, 255, 0, 0.5);
+}
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  background: #000000;
+  border-top: 1px solid #333333 !important;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  color: #e6e6e6;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+/* Títulos del footer */
+footer .text-neon {
+  color: #9dff00 !important;       /* mismo verde que la navbar active */
+  letter-spacing: 0.05em;
+}
+
+/* Texto */
+footer .text-footer {
+  color: #cccccc;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* Lista de redes */
+.footer-social-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Link de red con icono + texto */
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #cccccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+/* Iconos */
+.footer-social-link i {
+  font-size: 1.1rem;
+}
+
+/* Hover: se pone blanco y sube un poquito */
+.footer-social-link:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  footer .col-md-4 {
+    text-align: left;
+  }
+}
+/* ==============================
+   ANIMACIONES
+============================== */
+
+/* Secciones que aparecen con fade + slide */
+.fade-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  will-change: opacity, transform;
+}
+.fade-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (min-width: 992px) {
+  .aside-card {
+    position: sticky;
+    top: 110px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  #codesCarousel .carousel-item img {
+    height: 260px;
+  }
+}
